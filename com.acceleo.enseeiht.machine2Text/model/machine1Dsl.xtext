@@ -1,0 +1,70 @@
+grammar com.xtext.enseeiht.stateDSL.StateDsl with org.eclipse.xtext.common.Terminals
+
+generate stateDsl "http://www.xtext.com/enseeiht/stateDSL/StateDsl"
+
+Model returns Model:
+	state+=State*;
+	
+State returns State:
+	'define' name=ID '{'
+		components+=(Cpu|Sound|Video|Gpu|Network)*
+		appication+=(Skype|Game)*
+	'}';
+
+
+
+Cpu returns Component:
+	name='Cpu''.' attr=CpuAttr ';' 
+;
+
+CpuAttr returns Attribute:
+	name='state' '=' value=('string')
+|	name='perf' '=' value=('integer')
+;
+
+
+Sound returns Component:
+	name='Sound''.' attr=SoundAttr ';' 
+;
+
+SoundAttr returns Attribute:
+;
+
+
+Video returns Component:
+	name='Video''.' attr=VideoAttr ';' 
+;
+
+VideoAttr returns Attribute:
+;
+
+
+Gpu returns Component:
+	name='Gpu''.' attr=GpuAttr ';' 
+;
+
+GpuAttr returns Attribute:
+	name='state' '=' value=('String')
+;
+
+
+Network returns Component:
+	name='Network''.' attr=NetworkAttr ';' 
+;
+
+NetworkAttr returns Attribute:
+;
+
+
+
+
+Application returns Application:
+		'Skype' '=' Status ';' 
+|		'Game' '=' Status ';' 
+;
+
+
+
+
+
+

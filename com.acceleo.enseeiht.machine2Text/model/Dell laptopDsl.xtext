@@ -1,0 +1,100 @@
+grammar com.xtext.enseeiht.stateDSL.StateDsl with org.eclipse.xtext.common.Terminals
+
+generate stateDsl "http://www.xtext.com/enseeiht/stateDSL/StateDsl"
+
+Model returns Model:
+	state+=State*;
+	
+State returns State:
+	'define' name=ID '{'
+		componentsHW+=(Audiodevice|Ethernetcard|Graphicscontroller|Usbcontrollerxhci|Usbcontrollerehci|Satacontroller|Graphiccard|Wifi)*
+		appicationSW+=(Skype)*
+	'}';
+
+
+
+Audiodevice:
+	name='Audiodevice.' attr=AudiodeviceAttr ';' 
+;
+
+AudiodeviceAttr returns Attribute:
+	name='State' '=' value=('ON'|'OFF')
+|	name='Volume' '=' value=('0%'|'10%'|'20%'|'50%'|'100%')
+;
+
+
+Ethernetcard returns Component:
+	name='Ethernetcard.' attr=EthernetcardAttr ';' 
+;
+
+EthernetcardAttr returns Attribute:
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Graphicscontroller returns Component:
+	name='Graphicscontroller.' attr=GraphicscontrollerAttr ';' 
+;
+
+GraphicscontrollerAttr returns Attribute:
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Usbcontrollerxhci returns Component:
+	name='Usbcontrollerxhci.' attr=UsbcontrollerxhciAttr ';' 
+;
+
+UsbcontrollerxhciAttr returns Attribute:
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Usbcontrollerehci returns Component:
+	name='Usbcontrollerehci.' attr=UsbcontrollerehciAttr ';' 
+;
+
+UsbcontrollerehciAttr returns Attribute:
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Satacontroller returns Component:
+	name='Satacontroller.' attr=SatacontrollerAttr ';' 
+;
+
+SatacontrollerAttr returns Attribute:
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Graphiccard returns Component:
+	name='Graphiccard.' attr=GraphiccardAttr ';' 
+;
+
+GraphiccardAttr returns Attribute:
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Wifi returns Component:
+	name='Wifi.' attr=WifiAttr ';' 
+;
+
+WifiAttr returns Attribute:
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+
+
+Skype returns Application:
+	name='Skype.' attr=SkypeAttr ';'
+;
+
+SkypeAttr returns Attribute:
+	name='State' '=' value=	('ON'|'OFF')
+;
+
+
+

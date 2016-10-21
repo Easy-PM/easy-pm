@@ -1,0 +1,28 @@
+grammar com.xtext.enseeiht.stateDSL.StateDsl with org.eclipse.xtext.common.Terminals
+
+generate stateDsl "http://www.xtext.com/enseeiht/stateDSL/StateDsl"
+
+Model:
+	(state+=State)*;
+	
+State:
+	'define' name=ID '{'
+		features+=Feature*
+		appication+=Application*
+	'}';
+
+Feature:
+		'Camera' '=' Status ';' 
+|		'Sound' '=' Status ';' 
+|		'Internet' '=' Status ';' 
+|		'Keyboard' '=' Status ';' 
+|		'Microphone' '=' Status ';' 
+;
+
+Status :
+	'ON'|'OFF'
+;
+
+Application:
+		'Skype' '=' Status ';' 
+;

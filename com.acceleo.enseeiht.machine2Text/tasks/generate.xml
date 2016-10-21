@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="generate" name="com.acceleo.enseeiht.machine2Text">
+    <property name="ECLIPSE_HOME" value="../../../../../root/eclipse/dsl-neon3/eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value="../.."/>
+
+    <!-- The classpath with only the dependencies used by the project -->
+    <path id="com.acceleo.enseeiht.machine2Text.libraryclasspath">
+        <pathelement location="${ECLIPSE_WORKSPACE}/com.acceleo.enseeiht.machine2Text/bin"/>
+    </path>
+
+    <path id="com.acceleo.enseeiht.machine2Text.classpath">
+        <path refid="com.acceleo.enseeiht.machine2Text.libraryclasspath"/>
+    </path>
+
+    <!-- The classpath with only the jars available in the plugin folder of Eclipse -->
+    <path id="com.acceleo.enseeiht.machine2Text.libraryclasspath.alljars">
+        <pathelement location="../com.acceleo.enseeiht.machine2Text/bin"/>
+        <fileset dir="${ECLIPSE_HOME}/plugins/" includes="*.jar"/>
+    </path>
+
+    <path id="com.acceleo.enseeiht.machine2Text.classpath.alljars">
+        <path refid="com.acceleo.enseeiht.machine2Text.libraryclasspath.alljars"/>
+    </path>
+
+    <!-- The default task with the jars used by this project -->
+    <target name="generate">
+        <java classname="com.acceleo.enseeiht.machine2Text.main.Generate" classpathref="com.acceleo.enseeiht.machine2Text.classpath">
+            <arg value="${model}"/>
+            <arg value="${target}"/>
+        </java>
+    </target>
+
+    <!--
+        In case of problem you can also try with all the jar available in your Eclipse
+        Keep in mind that having two versions of the same jar can create problems
+    -->
+    <target name="generate.alljars">
+        <java classname="com.acceleo.enseeiht.machine2Text.main.Generate" classpathref="com.acceleo.enseeiht.machine2Text.classpath">
+            <arg value="${model}"/>
+            <arg value="${target}"/>
+        </java>
+    </target>
+</project>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.gmf.enseeiht:Machine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.gmf.enseeiht="com.gmf.enseeiht.machineModel" name="Dell laptop">
+  <components name="Camera" driverName="">
+    <attributes name="State" type="{On,OFF} "/>
+  </components>
+  <components name="Sound" driverName="snd_hda_intel">
+    <attributes name="State" type="{ON,OFF}"/>
+  </components>
+  <components name="Ethernet card" driverName="e1000">
+    <attributes name="State" type="{ON,OFF}"/>
+    <events name="Send Packet" functionToMonitor="packet_send()"/>
+  </components>
+  <applications name="Skype">
+    <functions name="getConnection()"/>
+    <functions name="doStuff()"/>
+    <modules name="Sound"/>
+    <modules name="Connection"/>
+    <modules name="SoundAcquisition"/>
+  </applications>
+</com.gmf.enseeiht:Machine>

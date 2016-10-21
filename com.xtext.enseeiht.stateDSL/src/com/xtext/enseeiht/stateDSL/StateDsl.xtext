@@ -1,0 +1,105 @@
+grammar com.xtext.enseeiht.stateDSL.StateDsl with org.eclipse.xtext.common.Terminals
+
+generate stateDsl "http://www.xtext.com/enseeiht/stateDSL/StateDsl"
+
+Model returns Model:
+	state+=State*;
+	
+State returns State:
+	'define' name=ID '{'
+		components+=(KeyWord|Audiodevice|Ethernetcard|Graphicscontroller|Usbcontrollerxhci|Usbcontrollerehci|Satacontroller|Graphiccard|Wifi)*
+		appication+=(Skype)*
+	'}';
+
+KeyWord returns Component: 
+	name=('all'|'hw'|'sw') '=' attr=KeyWorddAttr ';'
+;
+
+
+KeyWorddAttr  returns Attribute:
+	name='State' '=' value=('ON'|'OFF')
+;
+
+Audiodevice returns Component:
+	name='Audiodevice' '.' ('children.')? attr=AudiodeviceAttr ';' 
+	
+;
+
+AudiodeviceAttr returns Attribute :
+	name='State' '=' value=('ON'|'OFF')
+|	name='Volume' '=' value=('0%'|'10%'|'20%'|'50%'|'100%')
+;
+
+
+Ethernetcard returns Component :
+	name='Ethernetcard' '.' ('children.')? attr=EthernetcardAttr ';' 
+;
+
+EthernetcardAttr  returns Attribute:
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Graphicscontroller returns Component :
+	name='Graphicscontroller.' ('children.')? attr=GraphicscontrollerAttr ';' 
+;
+
+GraphicscontrollerAttr returns Attribute :
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Usbcontrollerxhci returns Component :
+	name='Usbcontrollerxhci.' ('children.')? attr=UsbcontrollerxhciAttr ';' 
+;
+
+UsbcontrollerxhciAttr returns Attribute :
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Usbcontrollerehci returns Component :
+	name='Usbcontrollerehci.' ('children.')? attr=UsbcontrollerehciAttr ';' 
+;
+
+UsbcontrollerehciAttr returns Attribute :
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Satacontroller returns Component :
+	name='Satacontroller.' ('children.')? attr=SatacontrollerAttr ';' 
+;
+
+SatacontrollerAttr returns Attribute :
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Graphiccard returns Component :
+	name='Graphiccard.' ('children.')? attr=GraphiccardAttr ';' 
+;
+
+GraphiccardAttr returns Attribute :
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+Wifi returns Component :
+	name='Wifi.' attr=WifiAttr ';' 
+;
+
+WifiAttr returns Attribute :
+	name='State' '=' value=('ON'|'OFF')
+;
+
+
+
+
+Skype returns Application:
+	name='Skype.' attr=SkypeAttr ';'
+;
+
+SkypeAttr returns Attribute :
+	name='State' '=' value=	('ON'|'OFF')
+;

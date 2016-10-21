@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.gmf.enseeiht:Machine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.gmf.enseeiht="com.gmf.enseeiht.machineModel" name="machine1">
+  <components name="CPU">
+    <attributes name="state" type="string"/>
+    <attributes name="perf" type="integer "/>
+  </components>
+  <components name="Sound"/>
+  <components name="Video"/>
+  <components name="GPU">
+    <attributes name="state" type="String "/>
+  </components>
+  <components name="Network"/>
+  <busConnections source="//@components.4" target="//@components.0"/>
+  <busConnections source="//@components.3" target="//@components.0"/>
+  <busConnections source="//@components.2" target="//@components.0"/>
+  <busConnections source="//@components.1" target="//@components.0"/>
+  <applications name="Skype" need="//@components.0 //@components.3 //@components.2 //@components.1 //@components.4"/>
+  <applications name="Game" need="//@components.1 //@components.2 //@components.3"/>
+</com.gmf.enseeiht:Machine>

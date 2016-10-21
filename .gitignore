@@ -1,3 +1,17 @@
+*.cmd
+*.tmp_versions/
+*.symvers
+*.mod.c
+*.order
+
+# Eclipse
+.classpath
+.project
+.settings/
+META-INF/
+bin/
+.options 
+
 # Object files
 *.o
 *.ko

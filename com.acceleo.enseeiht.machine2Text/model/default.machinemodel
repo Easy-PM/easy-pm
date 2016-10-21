@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.gmf.enseeiht:Machine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.gmf.enseeiht="com.gmf.enseeiht.machineModel" name="Dell laptop">
+  <components name="Audio device" driverName="snd_hda_intel">
+    <attributes name="State" type="{ON,OFF}"/>
+    <attributes name="Volume" type="{0%,10%, 20%, 50%, 100%}"/>
+    <events name="Access Sound" functionToMonitor="sound()"/>
+    <events name="Remove access" functionToMonitor="access_off() "/>
+  </components>
+  <components name="Ethernet card" driverName="e1000">
+    <attributes name="State" type="{ON,OFF}"/>
+    <events name="Send Packet" functionToMonitor="packet_send()"/>
+    <events name="Receive Packet" functionToMonitor="ack()"/>
+  </components>
+  <components name="Graphics Controller" driverName="i915">
+    <attributes name="State" type="{ON,OFF}"/>
+    <events name="Display" functionToMonitor="display()"/>
+  </components>
+  <components name="USB Controller xHCI" driverName="xhci_hcd">
+    <attributes name="State" type="{ON,OFF}"/>
+    <events name="Plug USB" functionToMonitor="usb_plug()"/>
+    <events name="Unplug USB" functionToMonitor="usb_unplug()"/>
+  </components>
+  <components name="USB Controller EHCI" driverName="ehci_pci">
+    <attributes name="State" type="{ON, OFF}"/>
+    <events name="Plug USB" functionToMonitor="usb_plug()"/>
+    <events name="Unplug USB" functionToMonitor="unplug_usb()"/>
+  </components>
+  <components name="SATA Controller" driverName="ahci">
+    <attributes name="State" type="{ON,OFF}"/>
+    <events name="Read data" functionToMonitor="read()"/>
+  </components>
+  <components name="Graphic Card" driverName="nouveau">
+    <attributes name="State" type="{ON,OFF}"/>
+    <events name="Display" functionToMonitor="display()"/>
+  </components>
+  <components name="Wifi" driverName="iwlwifi">
+    <attributes name="State" type="{ON,OFF}"/>
+    <events name="Send Packet" functionToMonitor="send_packet()"/>
+    <events name="Receive Packet" functionToMonitor="ack()"/>
+  </components>
+  <applications name="Skype" need="//@components.2/@events.0 //@components.5/@events.0 //@components.0/@events.0 //@components.1/@events.0 //@components.1/@events.1 //@components.7/@events.0 //@components.7/@events.1 //@components.6/@events.0">
+    <functions name="start()"/>
+    <functions name="close()"/>
+    <functions name="call()"/>
+    <functions name="endCall()"/>
+    <functions name="receiveCall()"/>
+    <functions name="addVideo()"/>
+    <functions name="removeVideo()"/>
+    <functions name="mute()"/>
+    <functions name="demute()"/>
+    <attribute name="State" type="{ON,OFF}"/>
+  </applications>
+</com.gmf.enseeiht:Machine>

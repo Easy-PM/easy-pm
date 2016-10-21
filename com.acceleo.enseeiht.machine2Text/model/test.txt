@@ -1,0 +1,12 @@
+	List of components (8):
+		Audio device
+		Ethernet card
+		Graphics Controller
+		USB Controller xHCI
+		USB Controller EHCI
+		SATA Controller
+		Graphic Card
+		Wifi
+
+	List of applications (1):
+		Skype needs Display, Read data, Access Sound, Send Packet, Receive Packet, Send Packet, Receive Packet, Display

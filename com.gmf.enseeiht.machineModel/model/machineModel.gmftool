@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmftool:ToolRegistry
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
+  <palette
+      title="machineModelPalette">
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Main component"
+        description="Main machine component"
+        collapsible="true">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Component"
+          description="Create new Component">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Application"
+          description="Create new Application">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Application.gif"
+            bundle="com.gmf.enseeiht.machineModel.edit"/>
+      </tools>
+    </tools>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Component characteristics"
+        description="Add attribute or expose event to a machine component"
+        collapsible="true">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Attribute"
+          description="Create new Attribute">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Attribute.gif"
+            bundle="com.gmf.enseeiht.machineModel.edit"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Event"
+          description="Create an event">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Event.gif"
+            bundle="com.gmf.enseeiht.machineModel.edit"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+    </tools>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Application characteristics"
+        collapsible="true">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Function"
+          description="Create a function">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Function.gif"
+            bundle="com.gmf.enseeiht.machineModel.edit"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Module"
+          description="Create a module">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Module.gif"
+            bundle="com.gmf.enseeiht.machineModel.edit"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+    </tools>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Links"
+        collapsible="true">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="BusConnection"
+          description="Create new BusConnection">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/BusConnection.gif"
+            bundle="com.gmf.enseeiht.machineModel.edit"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="ApplicationNeed"
+          description="Create new ApplicationNeed">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/ApplicationNeed.gif"
+            bundle="com.gmf.enseeiht.machineModel.edit"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+    </tools>
+  </palette>
+</gmftool:ToolRegistry>

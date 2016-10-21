@@ -1,0 +1,59 @@
+grammar com.xtext.enseeiht.policyDSL.PolicyDsl with org.eclipse.xtext.common.Terminals
+generate policyDsl "http://www.xtext.com/enseeiht/policyDSL/PolicyDsl" 
+
+Model returns Policy:
+	'policy' name=ID '{'
+		stateChanges+=stateChange*
+	'}'
+;
+	
+stateChange returns Transition:
+	 source=State '=>' target=State 'when' action=(
+Audio_device|Ethernet_card|Graphics_Controller|USB_Controller_xHCI|USB_Controller_EHCI|SATA_Controller|Graphic_Card|Wifi
+|Skype)
+';';
+
+
+enum State:
+	off = 'off'|
+	skypeOn = 'skypeOn'|
+	call = 'call'|
+	videoCall = 'videoCall'
+;
+Audio_device returns Action:
+	name='Audio_device.' value=('Access_Sound'|'Remove_access')
+;
+
+Ethernet_card returns Action:
+	name='Ethernet_card.' value=('Send_Packet'|'Receive_Packet')
+;
+
+Graphics_Controller returns Action:
+	name='Graphics_Controller.' value=('Display')
+;
+
+USB_Controller_xHCI returns Action:
+	name='USB_Controller_xHCI.' value=('Plug_USB'|'Unplug_USB')
+;
+
+USB_Controller_EHCI returns Action:
+	name='USB_Controller_EHCI.' value=('Plug_USB'|'Unplug_USB')
+;
+
+SATA_Controller returns Action:
+	name='SATA_Controller.' value=('Read_data')
+;
+
+Graphic_Card returns Action:
+	name='Graphic_Card.' value=('Display')
+;
+
+Wifi returns Action:
+	name='Wifi.' value=('Send_Packet'|'Receive_Packet')
+;
+
+
+Skype returns Action:
+	name='Skype.' value=('Start'|'Close'|'Call'|'EndCall'|'ReceiveCall'|'AddVideo'|'RemoveVideo'|'Mute'|'Demute')
+;
+
