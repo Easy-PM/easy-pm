@@ -12,7 +12,7 @@
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Information about ACPI and PCI devices");
-MODULE_AUTHOR("Grégoire Todeschi");
+MODULE_AUTHOR("EasyPM");
 
 #define DEVNAME "power_state_info"
 #define PREFIX 	"Power State Info- "

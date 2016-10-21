@@ -125,8 +125,9 @@ static struct pm_policy main_policy = {
 /* End generation */
 
 
-static void change_machine_state(struct hw_comp *comp)
+static void change_machine_state(struct transition *tr)
 {
+
         return;
 }
 
@@ -169,9 +170,20 @@ static void suspend(struct hw_comp *comp)
 
 static int kmv_show(struct seq_file *seqfp, void *p)
 {
-        //TODOOOOOOOO
         struct transition *transitions = *main_policy.transitions;
+
         struct transition skOff = transitions[0];
+        struct transition skOn  = transitions[1];
+
+        struct machine_state skOff_st = *skOff.start;
+        struct machine_state skOn_fi = *skOn.end;
+
+        int i = 0;
+        while (skOff_st.hw_states[i] != NULL) {
+                struct hw_state *hw_st = skOff_st.hw_states[i];
+                seq_printf(seqfp, "%s - \n", hw_st->hw->name, hw_st->hw->init_counter);
+                i++;
+        }
 	return 0;
 }
 
@@ -221,11 +233,16 @@ static int __init kmv_driver_init(void)
 
         /* Generated */
 	hw_audio_snd.pdev = pci_get_device(0x8086, 0x8c20, NULL);
-        hw_audio_snd.init_counter = hw_audio_snd.pdev->dev.power.usage_count.counter > 0?  hw_audio_snd.pdev->dev.power.usage_count.counter:1;
+        if (hw_audio_snd.pdev != NULL)
+                hw_audio_snd.init_counter = hw_audio_snd.pdev->dev.power.usage_count.counter > 0?  hw_audio_snd.pdev->dev.power.usage_count.counter:1;
+
         hw_vga.pdev = pci_get_device(0x1002, 0x515e, NULL);
-        hw_audio_snd.init_counter = hw_vga.pdev->dev.power.usage_count.counter > 0?  hw_vga.pdev->dev.power.usage_count.counter:1;
+        if (hw_vga.pdev != NULL)
+                hw_vga.init_counter = hw_vga.pdev->dev.power.usage_count.counter > 0?  hw_vga.pdev->dev.power.usage_count.counter:1;
+
         hw_ethernet.pdev = pci_get_device(0x14e4, 0x166a, NULL);
-        hw_audio_snd.init_counter = hw_ethernet.pdev->dev.power.usage_count.counter > 0?  hw_ethernet.pdev->dev.power.usage_count.counter:1;
+        if (hw_ethernet.pdev != NULL)
+                hw_ethernet.init_counter = hw_ethernet.pdev->dev.power.usage_count.counter > 0?  hw_ethernet.pdev->dev.power.usage_count.counter:1;
         /* End of generation */
 
 	printk(KERN_INFO PREFIX "/proc/acpi/%s created\n", PROCFS_NAME);
