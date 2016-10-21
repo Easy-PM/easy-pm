@@ -181,7 +181,7 @@ static int kmv_show(struct seq_file *seqfp, void *p)
         int i = 0;
         while (skOff_st.hw_states[i] != NULL) {
                 struct hw_state *hw_st = skOff_st.hw_states[i];
-                seq_printf(seqfp, "%s - \n", hw_st->hw->name, hw_st->hw->init_counter);
+                seq_printf(seqfp, "%s - %d %s\n", hw_st->hw->name, hw_st->hw->init_counter, hw_st->hw->pdev != NULL? "Not null" : "null");
                 i++;
         }
 	return 0;
